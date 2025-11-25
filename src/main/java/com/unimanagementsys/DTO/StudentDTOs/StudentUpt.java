@@ -1,6 +1,6 @@
-package com.unimanagementsys.Entities;
+package com.unimanagementsys.DTO.StudentDTOs;
 
-public class Lessons {
+public class StudentUpt {
     private int Id;
     private String name;
     private String surName;

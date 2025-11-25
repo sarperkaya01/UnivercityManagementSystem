@@ -1,10 +1,9 @@
-package com.unimanagementsys.Entities;
+package com.unimanagementsys.DTO.StudentDTOs;
 
-public class Lessons {
-    private int Id;
+public class StudentCreate {
+    
     private String name;
     private String surName;
     private int SNum;
     private String currentClass;
-
 }
