@@ -8,10 +8,10 @@ import lombok.*;
 
 @Entity
 @Table(name = "students")
-@Data                       // getter + setter + toString + equals + hashcode
-@NoArgsConstructor          // parametresiz constructor
-@AllArgsConstructor         // tüm alanlar için constructor
-@Builder                    // builder pattern-method chain
+@Data // getter + setter + toString + equals + hashcode
+@NoArgsConstructor // parametresiz constructor
+@AllArgsConstructor // tüm alanlar için constructor
+@Builder // builder pattern-method chain
 public class Student {
 
     @Id
@@ -32,7 +32,13 @@ public class Student {
     @Column(name = "grade", nullable = false)
     private Grade grade;
 
-   // studen number generator
-   
+    // studen number generator
+
+    public void isGradeUp(boolean passed) {
+        if (passed) {// buraya note typesdan metot gelecek
+            this.grade.moveUpGrade();
+        }
+
+    }
 
 }

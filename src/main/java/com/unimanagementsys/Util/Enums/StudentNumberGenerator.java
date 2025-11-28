@@ -2,6 +2,8 @@ package com.unimanagementsys.Util.Enums;
 
 import java.time.Year;
 
+import com.unimanagementsys.Util.Enums.MajorEnums.EngineeringCodes;
+
 public class StudentNumberGenerator {
 
     public static String generateNumber(Faculty faculty, Enum<?> department) {

@@ -1,6 +1,6 @@
 package com.unimanagementsys.Util.Enums;
 
-public enum NoteTypes {
+public enum NoteTypes {// bu oranlar bolume gore degisecek
     VISA(0.4),
     FINAL(0.6),
     RESIT(0.5);
@@ -15,13 +15,10 @@ public enum NoteTypes {
         return weight;
     }
 
-    public double calculateWeightedAvg(double visa, double fin) {
-
-        return (visa * VISA.weight) + (fin * FINAL.weight);
+    public  double weightedNote(double note) {
+        return note * this.weight;
     }
 
-    public double calculateWeightedAvgResit(double fin, double resit) {
-        return ((fin * (1 - RESIT.weight)) + (resit * RESIT.weight));
-    }
+   
 
 }

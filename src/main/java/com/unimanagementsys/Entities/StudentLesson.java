@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "student_lesson")
-@Data
+@Data 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -25,5 +25,10 @@ public class StudentLesson {
     @ManyToOne
     @JoinColumn(name = "lesson_id", nullable = false)
     private Lesson lessonId;
+
+    public void asdf(){
+        lessonId.getPassingNote();
+        
+    }
 
 }

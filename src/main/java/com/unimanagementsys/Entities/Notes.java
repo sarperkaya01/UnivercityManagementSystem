@@ -1,5 +1,6 @@
 package com.unimanagementsys.Entities;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.unimanagementsys.Util.Enums.NoteTypes;
@@ -32,5 +33,42 @@ public class Notes {
 
     @Column(name = "note_point", nullable = false, updatable = false)
     private double notePoint;
+
+    public static double calculateWeightedAvg(double visa, double fin) {
+
+        return (visa * NoteTypes.VISA.getWeight()) + (fin * NoteTypes.FINAL.getWeight());
+    }
+
+    public static double calculateWeightedAvgResit(double fin, double resit) {
+        return ((fin * (1 - NoteTypes.RESIT.getWeight())) + (resit * NoteTypes.RESIT.getWeight()));
+    }
+
+    public void weightedAvgNotePoint(List<Notes> notes) {
+
+        Notes visaNote = notes.stream()
+                .filter(type -> NoteTypes.VISA.equals(type.noteType))
+                .findFirst()
+                .orElse(null);
+
+        Notes finalNote = notes.stream()
+                .filter(type -> NoteTypes.FINAL.equals(type.noteType))
+                .findFirst()
+                .orElse(null);
+
+        Notes resitNote = notes.stream()
+                .filter(type -> NoteTypes.RESIT.equals(type.noteType))
+                .findFirst()
+                .orElse(null);
+        boolean passed = false;
+        if (resitNote != null) {
+            passed = this.lessonId.getPassingNote() < calculateWeightedAvgResit(finalNote.notePoint,
+                    resitNote.notePoint);
+
+        } else {
+            passed = this.lessonId.getPassingNote() < calculateWeightedAvg(visaNote.notePoint, finalNote.notePoint);
+        }
+        studentId.isGradeUp(passed);
+
+    }
 
 }

@@ -42,4 +42,8 @@ public class Lesson {
     @Column(name = "absence_limit", nullable = false, updatable = false)
     private int absenceLimit;
 
+    public boolean isAbsenceLimitExceeded(int absenceCount) {//nasil kullanilir bilmiyorum suanda
+        return absenceCount > absenceLimit;
+    }
+
 }

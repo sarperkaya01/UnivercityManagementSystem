@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data // getter + setter + toString + equals + hashcode
 @NoArgsConstructor // parametresiz constructor
 @AllArgsConstructor
-public class UserRoles {
+public class Role {
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false, updatable = false)
