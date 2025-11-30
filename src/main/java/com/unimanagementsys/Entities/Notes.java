@@ -1,5 +1,6 @@
 package com.unimanagementsys.Entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -35,6 +36,7 @@ public class Notes {
     private double notePoint;
 
     public static double calculateWeightedAvg(double visa, double fin) {
+       
 
         return (visa * NoteTypes.VISA.getWeight()) + (fin * NoteTypes.FINAL.getWeight());
     }
@@ -67,6 +69,7 @@ public class Notes {
         } else {
             passed = this.lessonId.getPassingNote() < calculateWeightedAvg(visaNote.notePoint, finalNote.notePoint);
         }
+        
         studentId.isGradeUp(passed);
 
     }
